@@ -22,7 +22,7 @@ namespace ToDoList.Models
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<ToDoList> ToDoList { get; set; }
+        public virtual DbSet<TaskList> ToDoList { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -133,7 +133,7 @@ namespace ToDoList.Models
                 entity.Property(e => e.UserName).HasMaxLength(256);
             });
 
-            modelBuilder.Entity<ToDoList>(entity =>
+            modelBuilder.Entity<TaskList>(entity =>
             {
                 entity.Property(e => e.DueDate).HasColumnType("date");
 

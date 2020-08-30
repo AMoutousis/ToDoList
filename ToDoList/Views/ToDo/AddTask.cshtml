@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "AddTask";
+}
+
+<h1>Add Task</h1>
+
+<form action="../ToDo/AddTask" method="post">
+    <input type="number" name="Priority" class="form-control mb-4" />
+    <input type="text" name="ToDoName" placeholder="Task Name" class="form-control mb-4" />
+    <input type="text" name="ToDoDescription" placeholder="Description" class="form-control mb-4" />
+    <input type="date" name="DueDate" placeholder="@DateTime.Today.ToShortDateString()" class="form-control mb-4" />
+
+    <div class="form-control mb-4">
+        Complete? <input type="checkbox" name="Complete" value="true" />
+        <input type="checkbox" name="Complete" value="false" hidden />
+    </div>
+
+    <input type="submit" value="Add this task!" class="form-control mb-4" />
+
+</form>

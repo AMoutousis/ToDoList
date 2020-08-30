@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "ToDoList";
+}
+
+<h1>ToDo List</h1>
+
+
+@model UserTodoVM
+
+
+    <table class="table table-bordered shadow table-hover table-info">
+        <tr class="d-table-row">
+            <th>Priority Actions</th>
+            <th>Due Date Actions</th>
+            <th>Complete Actions</th>
+        </tr>
+        <tr>
+        <td>
+            <a href="../ToDo/ToDoList?sortParameter=Priority">Sort Priority Ascending</a>
+        </td>
+        <td>
+            <a href="../ToDo/ToDoList?sortParameter=DueDate">Sort Due Date Ascending</a>
+        </td>
+        <td>
+            <a href="../ToDo/ToDoList?sortParameter=Complete">Sort Complete Ascending</a>
+        </td>
+        </tr>
+        <td>
+            <a href="../ToDo/ToDoList?sortParameter=PriorityDescending">Sort Priority Descending</a>
+        </td>
+        <td>
+            <a href="../ToDo/ToDoList?sortParameter=DueDateDescending">Sort Due Date Descending</a>
+        </td>
+        <td>
+            <a href="../ToDo/ToDoList?sortParameter=CompleteDescending">Sort Complete Descending</a>
+        </td>
+
+    </table>
+
+    <table class="table table-bordered shadow table-hover table-info">
+        <tr class="d-table-row">
+            <th>Priority</th>
+            <th>ToDoName</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Complete</th>
+            <th>Update Task</th>
+            <th>Delete Task</th>
+        </tr>
+
+        @foreach (var task in Model.Tasks)
+        {
+            if (Model.Tasks.Count == 0)
+            {
+                <p>You do not have any tasks!</p>
+            }
+            else
+            {
+                <tr>
+                    <td>@task.Priority</td>
+                    <td>@task.ToDoName</td>
+                    <td>@task.ToDoDescription</td>
+                    <td>@task.DueDate.ToShortDateString()</td>
+                    @if (@task.Complete == true)
+                    {
+                        <td>This task is complete</td>
+                    }
+                    else
+                    {
+                        <td>This task is not complete</td>
+                    }
+                    <td class="btn-info" style="background-color:#86cfda">
+                        <form action="../ToDo/UpdateTask" method="post">
+                            <input type="text" name="Id" value="@task.Id" hidden />
+                            <input type="submit" value="Update Task" />
+                        </form>
+                    </td>
+                    <td class="btn-primary">
+                        <form action="../ToDo/DeleteTask" method="post">
+                            <input type="text" name="Id" value="@task.Id" hidden />
+                            <input type="submit" value="Delete Task" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+
+    <button>
+        <a href="../ToDo/AddTask" class="align-content-xl-center">Add a new task!</a>
+    </button>

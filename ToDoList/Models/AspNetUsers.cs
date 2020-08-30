@@ -11,7 +11,7 @@ namespace ToDoList.Models
             AspNetUserLogins = new HashSet<AspNetUserLogins>();
             AspNetUserRoles = new HashSet<AspNetUserRoles>();
             AspNetUserTokens = new HashSet<AspNetUserTokens>();
-            ToDoList = new HashSet<ToDoList>();
+            ToDoList = new HashSet<TaskList>();
         }
 
         public string Id { get; set; }
@@ -34,6 +34,6 @@ namespace ToDoList.Models
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual ICollection<AspNetUserTokens> AspNetUserTokens { get; set; }
-        public virtual ICollection<ToDoList> ToDoList { get; set; }
+        public virtual ICollection<TaskList> ToDoList { get; set; }
     }
 }

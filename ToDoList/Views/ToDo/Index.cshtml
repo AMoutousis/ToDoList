@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@*print the details of the user currently logged in*@
+
+@ViewBag.userId
+
+@*@foreach (AspNetUsers frank in Model)
+{
+    <tr>
+        <td>@frank.Id</td>
+        <td>@frank.UserName</td>
+        <td>@frank.Email</td>
+    </tr>
+}*@

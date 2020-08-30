@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Update Task";
+}
+
+<h1>Update Task</h1>
+
+@model TaskList
+
+@{DateTime date = @Model.DueDate; }
+
+<form action="../ToDo/SaveChanges" method="post">
+    <input type="text" name="Id" value="@Model.Id" hidden />
+    <input type="text" name="Priority" value="@Model.Priority" />
+    <input type="text" name="ToDoName" value="@Model.ToDoName" placeholder="@Model.ToDoName" />
+    <input type="text" name="ToDoDescription" value="@Model.ToDoDescription" placeholder="@Model.ToDoDescription" />
+    <input type="date" name="DueDate" value="@date.ToShortDateString()" placeholder="@date.ToShortDateString()" />
+
+    @Html.LabelFor(m => m.Complete)
+    @if (Model.Complete == true)
+    {
+        <input type="checkbox" name="Complete" value="true" checked />
+        <input type="checkbox" name="Complete" value="false" hidden />
+    }
+    else
+    {
+        <input type="checkbox" name="Complete" value="true" />
+        <input type="checkbox" name="Complete" value="false" hidden />
+    }
+
+
+    <input type="submit" value="Save Changes!" />
+</form>
