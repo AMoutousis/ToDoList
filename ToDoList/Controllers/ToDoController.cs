@@ -48,14 +48,21 @@ namespace ToDoList.Controllers
                 case "PriorityDescending":
                     tasks.Sort((p1, p2) => (p2.Priority - p1.Priority));
                     break;
-                case "Complete":
-                    tasks.OrderBy(c => c.Complete);
-                    break;
+                //case "Complete":
+                //    tasks.OrderBy(c => c.Complete);
+                //    break;
                 case "CompleteDescending":
                     tasks.OrderBy(c => !c.Complete);
                     break;
                 default:
                     break;
+            }
+
+            if (sortParameter == "Complete")
+            {
+                tasks = (from item in tasks
+                         orderby item ascending
+                         select item).ToList();
             }
 
 
