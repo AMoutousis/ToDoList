@@ -48,9 +48,9 @@ namespace ToDoList.Controllers
                 case "PriorityDescending":
                     tasks.Sort((p1, p2) => (p2.Priority - p1.Priority));
                     break;
-                case "Complete":
-                    tasks.OrderBy(c => c.Complete);
-                    break;
+                //case "Complete":
+                //    tasks.OrderBy(c => c.Complete);
+                //    break;
                 case "CompleteDescending":
                     tasks.OrderBy(c => !c.Complete);
                     break;
@@ -58,6 +58,12 @@ namespace ToDoList.Controllers
                     break;
             }
 
+            if (sortParameter == "Complete")
+            {
+                tasks = (from item in tasks
+                         orderby item ascending
+                         select item).ToList();
+            }
 
             AspNetUsers currentUser = _todolistdb.AspNetUsers.Find(id);
             UserTodoVM userList = new UserTodoVM(tasks, currentUser);
