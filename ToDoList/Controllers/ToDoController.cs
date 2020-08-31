@@ -61,7 +61,7 @@ namespace ToDoList.Controllers
             if (sortParameter == "Complete")
             {
                 tasks = (from item in tasks
-                         orderby item ascending
+                         orderby item.Complete ascending
                          select item).ToList();
             }
 
