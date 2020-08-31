@@ -64,7 +64,10 @@ namespace ToDoList.Controllers
                          orderby item ascending
                          select item).ToList();
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9dd54bcf061a47bfcdd0951471314c861bfe16c9
 
             AspNetUsers currentUser = _todolistdb.AspNetUsers.Find(id);
             UserTodoVM userList = new UserTodoVM(tasks, currentUser);
